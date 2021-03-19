@@ -41,7 +41,7 @@ try:
 # catch people without tabulate and tell them to install
 except ImportError or ModuleNotFoundError:
     # print("Please Install tabulate using: \n sudo pip3 install tabulate")
-    bashCommand = "python3 -m pip install tabulate"  # this is the command that returns the data in json form
+    bashCommand = "python3 -m pip install tabulate --no-warn-script-location"  # this is the command that returns the data in json form
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)  # executes the cmd command
     output, error = process.communicate()  # get the data from the terminal instance
     ip_a()
