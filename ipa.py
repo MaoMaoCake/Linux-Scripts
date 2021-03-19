@@ -1,10 +1,8 @@
 #! /usr/bin/python3
 
-try:
+def ip_a():
     # tabulate is used to generate tables from the data
     from tabulate import tabulate
-    import json
-    import subprocess
 
     bashCommand = "ip -j a"  # this is the command that returns the data in json form
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)  # executes the cmd command
@@ -34,9 +32,19 @@ try:
         print(tabulate(table))
         # reset the table after every interface
         table = []
+try:
+    # import needed libraries
+    import json
+    import subprocess
+
+    ip_a()
 # catch people without tabulate and tell them to install
-except ImportError:
-    print("Please Install tabulate using: \n sudo pip3 install tabulate")
+except ImportError or ModuleNotFoundError:
+    # print("Please Install tabulate using: \n sudo pip3 install tabulate")
+    bashCommand = "python3 -m pip install tabulate"  # this is the command that returns the data in json form
+    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)  # executes the cmd command
+    output, error = process.communicate()  # get the data from the terminal instance
+    ip_a()
 # catch any other exception
 except Exception as e:
     print(e)
