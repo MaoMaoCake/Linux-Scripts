@@ -16,3 +16,9 @@ Prettier version of the ip a command Should be better to look
 
 ### How to use:
 ./ipa.py  
+
+## make_wpa_supplicant
+script to automatically make wpa_supplicant.conf file 
+
+### How to use:
+./make_wpa_supplicant
