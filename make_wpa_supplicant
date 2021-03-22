@@ -1,0 +1,15 @@
+#! /usr/bin/python3
+
+from getpass import getpass
+SSID = input("Please input SSID: ")
+country = input("Please Enter Country code: ").upper()
+password = getpass("Please enter Password: ")
+print("Generating File")
+with open("wpa_supplicant.conf","w") as f:
+	f.write("ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\n")
+	f.write(f"country={country}\n")
+	f.write("update_config=1\n\n")
+	f.write("network={\n")
+	f.write(f'ssid="{SSID}"\npsk="{password}"\n')
+	f.write("}")
+print("Done!")
